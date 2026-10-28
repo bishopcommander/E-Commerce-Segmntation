@@ -67,7 +67,9 @@ ecommerce-customer-segmentation/
 
 ---
 
-## 4. System Workflow & Methodology
+## 4. System Workflow & Architecture
+
+![System Architecture Diagram](architecture_diagram.png)
 
 ```
 [Raw Data: Synthetic Engine OR User Uploaded CSV]

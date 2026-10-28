@@ -107,6 +107,8 @@ Users can also **upload their own CSV** dataset. The application validates that 
 
 ## 7. System Architecture
 
+![System Architecture Diagram](architecture_diagram.png)
+
 ```
 ┌─────────────────────────────────────────────────┐
 │                  Streamlit UI                    │
