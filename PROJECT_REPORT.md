@@ -177,14 +177,40 @@ The dataset uses 7 behavioral metrics and 2 metadata columns:
 
 ---
 
-## 7. Cluster Profiles & Business Strategies ($K=4$)
+## 7. Experimental Results & Exact Run Metrics
 
-| Segment Label | Profile Characteristics | Business Strategy & Recommendation |
-|---|---|---|
-| **High-Value Customers** | Top income, highest annual spend, high purchase frequency, low recency (< 10 days) | VIP concierge, exclusive early product drops, loyalty rewards, premium personalized service. |
-| **Loyal Customers** | Moderate-to-high income, steady purchase frequency, strong website engagement | Tiered cashback, subscription perks, referral bonuses, retention campaigns. |
-| **Potential Customers** | Lower-to-moderate income, moderate visits, lower basket size | Limited-time deals, bundle discounts, Buy-Now-Pay-Later (BNPL) options, cart nudges. |
-| **At-Risk Customers** | High recency (> 90 days), declining visit frequency, low spending | Win-back email series, steep reactivation coupons, customer feedback surveys. |
+### 7.1 Key Summary Metrics (Default Baseline: N = 500, K = 4)
+- **Total Customers Processed:** 500
+- **Number of Clusters (K):** 4
+- **Final Model Inertia (WCSS):** `1,295.99`
+- **Overall Silhouette Score:** `0.3087`
+
+---
+
+### 7.2 Measured Cluster Breakdown ($K = 4$)
+
+| Cluster ID | Segment Label | Customer Count (Size) | Share of Total | Avg. Annual Income | Avg. Total Spending | Avg. Purchases | Avg. Order Value | Avg. Recency (Days) | Strategic Business Recommendation |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| **0** | **Loyal Customers** | **126** | 25.2% | \$59,634.92 | \$4,152.86 | 41.46 | \$104.97 | 18.60 days | Reward loyalty with cashback, early-access sales, and referral bonuses to maintain engagement. |
+| **1** | **Occasional Shoppers** | **173** | 34.6% | \$52,201.16 | \$1,481.17 | 9.06 | \$156.93 | 84.39 days | Re-engage with reminder emails, abandoned-cart nudges, and seasonal discount campaigns. |
+| **2** | **High-Value Customers** | **76** | 15.2% | \$96,689.47 | \$8,230.31 | 54.84 | \$150.78 | 10.66 days | Provide VIP programmes, exclusive concierge deals, and personalized recommendations to retain top revenue drivers. |
+| **3** | **Potential Customers** | **125** | 25.0% | \$30,517.60 | \$1,483.91 | 19.73 | \$57.67 | 31.12 days | Target with upselling campaigns, entry-tier product suggestions, and limited-time discount vouchers. |
+
+---
+
+### 7.3 Measured Elbow Method & Silhouette Scores Across K (2 to 10)
+
+| Number of Clusters (K) | Inertia (WCSS) | Silhouette Score | Trend & Interpretation |
+|:---:|:---:|:---:|:---|
+| **K = 2** | 2,284.52 | 0.3062 | Coarse segmentation; underfitting behavioral variance |
+| **K = 3** | 1,543.06 | 0.3397 | Sharp drop in inertia; strong initial grouping |
+| **K = 4** | **1,295.99** | **0.3087** | **Optimal practical business elbow point** |
+| **K = 5** | 1,063.39 | 0.3119 | Stable silhouette; identifies subtle sub-groups |
+| **K = 6** | 1,018.56 | 0.2606 | Drop in silhouette score; clusters begin to blur |
+| **K = 7** | 976.76 | 0.2314 | Over-segmentation; diminishing returns |
+| **K = 8** | 934.68 | 0.1939 | Cluster boundaries overlap significantly |
+| **K = 9** | 899.60 | 0.1796 | Fragmented small clusters |
+| **K = 10** | 873.64 | 0.1618 | Overfitting; clusters lack distinct business identity |
 
 ---
 
